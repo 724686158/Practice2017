@@ -9,9 +9,8 @@
 <html>
 <head>
     <title> 2017实习</title>
-    <p>HELLO，你好</p>
 </head>
 <body>
-
+    <p>HELLO，你好</p>
 </body>
 </html>
