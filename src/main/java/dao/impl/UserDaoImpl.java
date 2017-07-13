@@ -30,18 +30,18 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User load(String id) {
-        return (User) this.getCurrentSession().load(User.class, id);
+        return (User)this.getCurrentSession().load(User.class, id);
     }
 
     @Override
     public User get(String id) {
-        return (User) this.getCurrentSession().get(User.class, id);
+        return (User)this.getCurrentSession().get(User.class, id);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<User> findAll() {
-        List<User> acctUsers = this.getCurrentSession().createQuery("from user").setCacheable(true).list();
+        List<User> acctUsers = this.getCurrentSession().createQuery("from User").setCacheable(true).list();
         return acctUsers;
     }
 
@@ -66,11 +66,9 @@ public class UserDaoImpl implements UserDao {
         User entity = this.load(id);
         this.getCurrentSession().delete(entity);
     }
-
     @Override
     public void flush() {
         this.getCurrentSession().flush();
-
     }
 
 }
