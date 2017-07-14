@@ -15,7 +15,7 @@ import model.User;
  * 用户Dao接口
  */
 
-public interface UserDao extends GenericDao<User, String> {
+public interface UserDao extends GenericDao<User, Integer> {
 
 
 }

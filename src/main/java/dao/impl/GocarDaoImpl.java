@@ -1,25 +1,20 @@
 package dao.impl;
 
-/**
- * Created by Administrator on 2017/5/21.
- */
-import java.util.List;
-
+import dao.GocarDao;
+import model.Gocar;
 import model.User;
-import dao.UserDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
- * 创建时间：2015-2-6 下午2:45:14
- *
- * @author andy
- * @version 2.2
+ * Created by Administrator on 2017/7/13.
  */
-@Repository("userDao")
-public class UserDaoImpl implements UserDao {
+@Repository("GocarDao")
+public class GocarDaoImpl implements GocarDao{
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,46 +24,45 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User load(Integer id) {
-        return (User)this.getCurrentSession().load(User.class, id);
+    public Gocar load(Integer id) {
+        return (Gocar) this.getCurrentSession().load(Gocar.class, id);
     }
 
     @Override
-    public User get(Integer id) {
-        return (User)this.getCurrentSession().get(User.class, id);
+    public Gocar get(Integer id) {
+        return (Gocar)this.getCurrentSession().get(Gocar.class, id);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<User> findAll() {
-        List<User> acctUsers = this.getCurrentSession().createQuery("from User").setCacheable(true).list();
-        return acctUsers;
+    public List<Gocar> findAll() {
+        List<Gocar> gocars = this.getCurrentSession().createQuery("from Gocar").setCacheable(true).list();
+        return gocars;
     }
 
     @Override
-    public void persist(User entity) {
+    public void persist(Gocar entity) {
         this.getCurrentSession().persist(entity);
-
     }
 
     @Override
-    public Integer save(User entity) {
+    public Integer save(Gocar entity) {
         return (Integer) this.getCurrentSession().save(entity);
     }
 
     @Override
-    public void saveOrUpdate(User entity) {
+    public void saveOrUpdate(Gocar entity) {
         this.getCurrentSession().saveOrUpdate(entity);
     }
 
     @Override
     public void delete(Integer id) {
-        User entity = this.load(id);
+        Gocar entity = this.load(id);
         this.getCurrentSession().delete(entity);
     }
+
     @Override
     public void flush() {
         this.getCurrentSession().flush();
     }
-
 }
