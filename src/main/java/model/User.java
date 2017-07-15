@@ -17,12 +17,10 @@ public class User implements java.io.Serializable {
     private String name;
     private String pwd;
     private String email;
-    private String addr1;
-    private String addr2;
-    private Date regdate;
+    private String address;
+    private Date registertime;
     private String phone;
     private String sex;
-    private String answer;
     private Set<Gocar> gocars = new HashSet<Gocar>(0);
     private Set<Order> orders = new HashSet<Order>(0);
 
@@ -30,26 +28,9 @@ public class User implements java.io.Serializable {
 
     }
 
-    public User(String name, String pwd, String email, String addr1,
-                String addr2, Date regdate, String phone, String sex,
-                String answer, Set<Gocar> gocars, Set<Order> orders) {
-        this.name = name;
-        this.pwd = pwd;
-        this.email = email;
-        this.addr1 = addr1;
-        this.addr2 = addr2;
-        this.regdate = regdate;
-        this.phone = phone;
-        this.sex = sex;
-        this.answer = answer;
-        this.gocars = gocars;
-        this.orders = orders;
-    }
-
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY,generator="tableGenerator")
-    @TableGenerator(name="tableGenerator",initialValue=10000,allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO,generator="tg4")
+    @TableGenerator(name="tg4",initialValue=10000,allocationSize = 1)
     @Column(name = "id",unique = true, nullable = false)
     public Integer getId() {
         return this.id;
@@ -77,7 +58,7 @@ public class User implements java.io.Serializable {
         this.pwd = pwd;
     }
 
-    @Column(name = "email", length = 12)
+    @Column(name = "email", length = 20)
     public String getEmail() {
         return this.email;
     }
@@ -86,32 +67,23 @@ public class User implements java.io.Serializable {
         this.email = email;
     }
 
-    @Column(name = "addr1", length = 32)
-    public String getAddr1() {
-        return this.addr1;
+    @Column(name = "address", length = 32)
+    public String getAddress() {
+        return this.address;
     }
 
-    public void setAddr1(String addr1) {
-        this.addr1 = addr1;
-    }
-
-    @Column(name = "addr2", length = 32)
-    public String getAddr2() {
-        return this.addr2;
-    }
-
-    public void setAddr2(String addr2) {
-        this.addr2 = addr2;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "regdate", length = 10)
+    @Column(name = "registetime", length = 19)
     public Date getRegdate() {
-        return this.regdate;
+        return this.registertime;
     }
 
     public void setRegdate(Date regdate) {
-        this.regdate = regdate;
+        this.registertime = regdate;
     }
 
     @Column(name = "phone", length = 12)
@@ -132,16 +104,7 @@ public class User implements java.io.Serializable {
         this.sex = sex;
     }
 
-    @Column(name = "answer", length = 20)
-    public String getAnswer() {
-        return this.answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     public Set<Gocar> getGocars() {
         return this.gocars;
     }
@@ -150,7 +113,20 @@ public class User implements java.io.Serializable {
         this.gocars = gocars;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    public User(Integer id, String name, String pwd, String email, String address, Date registertime, String phone, String sex, Set<Gocar> gocars, Set<Order> orders) {
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+        this.email = email;
+        this.address = address;
+        this.registertime = registertime;
+        this.phone = phone;
+        this.sex = sex;
+        this.gocars = gocars;
+        this.orders = orders;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     public Set<Order> getOrders() {
         return this.orders;
     }

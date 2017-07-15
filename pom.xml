@@ -11,7 +11,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <kotlin.version>1.1.3-2</kotlin.version>
-    <springframe.version>4.3.9.RELEASE</springframe.version>
+    <springframe.version>4.1.4.RELEASE</springframe.version>
     <hibernate.version>4.3.8.Final</hibernate.version>
     <aspectjrt.version>1.8.9</aspectjrt.version>
     <fastjson.version>1.2.17</fastjson.version>
@@ -52,6 +52,8 @@
     </dependency>
 
     <!--springframework-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>

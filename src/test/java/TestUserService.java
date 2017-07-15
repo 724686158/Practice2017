@@ -31,7 +31,6 @@ public class TestUserService {
         user.setName("周俊");
         user.setPhone("17854258209");
         user.setPwd("zj5363");
-        user.setAnswer("我怎么可能会知道");
         userService.save(user);
     }
 }

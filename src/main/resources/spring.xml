@@ -8,7 +8,6 @@
     <context:property-placeholder location="classpath:config.properties"/>
     <!-- 扫描service自动注入为bean -->
     <context:component-scan base-package="service,service.impl" />
-    <context:component-scan base-package="controller" />
     <context:component-scan base-package="dao,dao.impl" />
     <context:component-scan base-package="model" />
 
