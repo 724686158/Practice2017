@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a href="helloworld">hello world</a>
+<a href="helloworld.do">hello world</a>
 
 </body>
 </html>
